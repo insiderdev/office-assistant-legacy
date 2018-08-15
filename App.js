@@ -1,11 +1,12 @@
 import { Provider } from 'react-redux';
 import React from 'react';
-import { Button } from 'react-native-ui-lib';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
 import './src/styles';
 
 import { store, persistor } from './src/redux/store';
+
+import AppView from './src/modules/AppViewContainer';
 
 export default function App() {
   return (
@@ -18,16 +19,7 @@ export default function App() {
         )}
         persistor={persistor}
       >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Button label="Let's get started!" />
-        </View>
+        <AppView />
       </PersistGate>
     </Provider>
   );
