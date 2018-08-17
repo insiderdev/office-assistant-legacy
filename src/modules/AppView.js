@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Button,
+  Image,
 } from 'react-native-ui-lib';
 
 import { colors, fonts, scale } from '../styles';
@@ -11,8 +12,14 @@ export default function AppView() {
   return (
     <View flex centerV padding-20>
       <View flex centerV centerH padding-10>
-        <Text h1>Stay fit, while working!</Text>
-        <Text p center marginT-10 padding-10>
+        <Image
+          assetName="person"
+          assetGroup="illustrations"
+        />
+        <View marginT-20 marginB-10>
+          <Text h1>Stay fit, while working!</Text>
+        </View>
+        <Text p center darkGray>
           Simple, yet important reminders to get you
           moving and stay healthy in your long sedentary
           office hours.

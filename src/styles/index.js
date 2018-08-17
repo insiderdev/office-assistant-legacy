@@ -1,4 +1,4 @@
-import { Typography, Colors } from 'react-native-ui-lib';
+import { Typography, Colors, Assets } from 'react-native-ui-lib';
 import { Dimensions } from 'react-native';
 
 import colors from './colors';
@@ -13,10 +13,18 @@ const guidelineBaseHeight = 680;
 Colors.loadColors(colors);
 
 Typography.loadTypographies({
-  h1: { fontSize: 16, fontFamily: 'Muli', fontWeight: 'bold' },
-  p: { fontSize: 13, fontFamily: 'Muli', fontWeight: '100' },
+  h1: { fontSize: 20, fontFamily: 'Muli', fontWeight: 'bold' },
+  p: {
+    fontSize: 12,
+    lineHeight: 20,
+    fontFamily: 'Muli',
+    fontWeight: '300',
+  },
 });
 
+Assets.loadAssetsGroup('illustrations', {
+  person: require('../../assets/images/person-illustration.png'),
+});
 
 const scale = size => width / guidelineBaseWidth * size;
 const verticalScale = size => height / guidelineBaseHeight * size;
