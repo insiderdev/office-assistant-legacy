@@ -13,7 +13,17 @@ const guidelineBaseHeight = 680;
 Colors.loadColors(colors);
 
 Typography.loadTypographies({
-  h1: { fontSize: 20, fontFamily: 'Muli', fontWeight: 'bold' },
+  h1: {
+    fontSize: 20,
+    fontFamily: 'Muli',
+    fontWeight: 'bold',
+  },
+  h2: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontFamily: 'Muli',
+    fontWeight: 'bold',
+  },
   p: {
     fontSize: 12,
     lineHeight: 20,

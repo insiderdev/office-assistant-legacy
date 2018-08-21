@@ -3,7 +3,7 @@ import {
 } from 'react-navigation';
 
 import Home from '../home/HomeView';
-import NotificationsList from '../notificationsList/NotoficationsListView';
+import NotificationsList from '../notificationsList/NotificationsListView';
 
 export default createStackNavigator({
   Home,
