@@ -26,6 +26,10 @@ Assets.loadAssetsGroup('illustrations', {
   person: require('../../assets/images/person-illustration.png'),
 });
 
+Assets.loadAssetsGroup('icons', {
+  plus: require('../../assets/icons/plus.png'),
+});
+
 const scale = size => width / guidelineBaseWidth * size;
 const verticalScale = size => height / guidelineBaseHeight * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
