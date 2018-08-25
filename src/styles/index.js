@@ -19,10 +19,20 @@ Typography.loadTypographies({
     fontWeight: 'bold',
   },
   h2: {
+    fontSize: 18,
+    lineHeight: 22,
+    fontFamily: 'Muli-SemiBold',
+  },
+  h3: {
     fontSize: 16,
     lineHeight: 22,
     fontFamily: 'Muli',
     fontWeight: 'bold',
+  },
+  h4: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: 'Muli',
   },
   p: {
     fontSize: 12,
@@ -38,6 +48,8 @@ Assets.loadAssetsGroup('illustrations', {
 
 Assets.loadAssetsGroup('icons', {
   plus: require('../../assets/icons/plus.png'),
+  arrowBack: require('../../assets/icons/arrow-back.png'),
+  chevronDown: require('../../assets/icons/chevron-down.png'),
 });
 
 const scale = size => width / guidelineBaseWidth * size;

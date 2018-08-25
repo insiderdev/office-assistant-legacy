@@ -41,6 +41,7 @@
 		50CB56D3EC0D4704B4C734A7 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8057B24C6FD346FBA0215810 /* Muli-Bold.ttf */; };
 		3963C69469BC4A73BC7AEDE2 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D10B928C5FFE489296FBC920 /* Muli-Light.ttf */; };
 		67001321303246F1BD482E65 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C1DE22DC3CB4D5E90A10D25 /* Muli.ttf */; };
+		DB642B7E9B194E5A866F52E1 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C37AB4ED57A84C2AB56DF68C /* Muli-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +352,7 @@
 		8057B24C6FD346FBA0215810 /* Muli-Bold.ttf */ = {isa = PBXFileReference; name = "Muli-Bold.ttf"; path = "../assets/fonts/Muli-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D10B928C5FFE489296FBC920 /* Muli-Light.ttf */ = {isa = PBXFileReference; name = "Muli-Light.ttf"; path = "../assets/fonts/Muli-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5C1DE22DC3CB4D5E90A10D25 /* Muli.ttf */ = {isa = PBXFileReference; name = "Muli.ttf"; path = "../assets/fonts/Muli.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C37AB4ED57A84C2AB56DF68C /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; name = "Muli-SemiBold.ttf"; path = "../assets/fonts/Muli-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +623,7 @@
 				8057B24C6FD346FBA0215810 /* Muli-Bold.ttf */,
 				D10B928C5FFE489296FBC920 /* Muli-Light.ttf */,
 				5C1DE22DC3CB4D5E90A10D25 /* Muli.ttf */,
+				C37AB4ED57A84C2AB56DF68C /* Muli-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				50CB56D3EC0D4704B4C734A7 /* Muli-Bold.ttf in Resources */,
 				3963C69469BC4A73BC7AEDE2 /* Muli-Light.ttf in Resources */,
 				67001321303246F1BD482E65 /* Muli.ttf in Resources */,
+				DB642B7E9B194E5A866F52E1 /* Muli-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
