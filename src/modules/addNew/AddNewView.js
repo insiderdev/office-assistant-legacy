@@ -18,18 +18,22 @@ import { colors, fonts, scale } from '../../styles';
 type AddNewViewPropsType = {
   autoConfirm: boolean,
   setAutoConfirm: (boolean) => void,
+  navigation: {
+    pop: () => void,
+  }
 };
 
 export default function AddNewView(props: AddNewViewPropsType) {
   const {
     autoConfirm,
     setAutoConfirm,
+    navigation,
   } = props;
 
   return (
     <View flex bg-lightGray paddingV-30>
       <View row centerV paddingH-20>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.pop()}>
           <Image
             assetGroup="icons"
             assetName="arrowBack"

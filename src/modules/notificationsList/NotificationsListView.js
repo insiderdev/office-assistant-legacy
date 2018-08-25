@@ -1,3 +1,6 @@
+/**
+ * @flow
+ */
 import React from 'react';
 import {
   FlatList,
@@ -9,7 +12,13 @@ import {
 
 import { PlusButton, NotificationCard } from '../../components';
 
-export default function HomeView() {
+type NotificationListViewPropsType = {
+  navigation: {
+    navigate: (string) => void,
+  },
+}
+
+export default function NotificationListView(props: NotificationListViewPropsType) {
   const notifications = [{
     name: 'Drink water',
     done: 4,
@@ -38,7 +47,7 @@ export default function HomeView() {
         )}
       />
 
-      <PlusButton />
+      <PlusButton onPress={() => props.navigation.navigate('AddNew')} />
     </View>
   );
 }
