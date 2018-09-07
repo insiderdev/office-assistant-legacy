@@ -5,7 +5,7 @@ import AppView from './AppView';
 export default compose(
   lifecycle({
     componentWillMount() {
-      console.disableYellowBox = true;
+      // console.disableYellowBox = true;
     },
   }),
 )(AppView);

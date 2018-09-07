@@ -1,7 +1,7 @@
 /**
  * @flow
  */
-import React from 'react';
+import * as React from 'react';
 import {
   FlatList,
 } from 'react-native';
@@ -18,7 +18,7 @@ type NotificationListViewPropsType = {
   },
 }
 
-export default function NotificationListView(props: NotificationListViewPropsType) {
+export default function NotificationListView(props: NotificationListViewPropsType): React.Node {
   const notifications = [{
     name: 'Drink water',
     done: 4,

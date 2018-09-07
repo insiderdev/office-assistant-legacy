@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ToggleButton component renders as expected 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NotificationCard
+    done={10}
+    name="Test Name"
+    nextNotificationSeconds={300}
+    total={20}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "borderRadius": 3,
+      "children": Array [
+        <View
+          padding-20={true}
+          row={true}
+          spread={true}
+          useNativeDriver={true}
+        >
+          <View
+            useNativeDriver={true}
+          >
+            <Text
+              h1={true}
+              marginB-10={true}
+              useNativeDriver={true}
+            >
+              Test Name
+            </Text>
+            <Text
+              useNativeDriver={true}
+            >
+              10
+               / 
+              20
+            </Text>
+          </View>
+          <View
+            useNativeDriver={true}
+          >
+            <Text
+              useNativeDriver={true}
+            >
+              300
+            </Text>
+          </View>
+        </View>,
+        <ProgressBar
+          backgroundColor="#e32d2f"
+          height={3}
+          progress={50}
+          progressBackgroundColor="#FCECEC"
+        />,
+      ],
+      "enableShadow": true,
+      "flex": true,
+      "marginH-10": true,
+      "marginT-15": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <View
+              useNativeDriver={true}
+            >
+              <Text
+                h1={true}
+                marginB-10={true}
+                useNativeDriver={true}
+              >
+                Test Name
+              </Text>
+              <Text
+                useNativeDriver={true}
+              >
+                10
+                 / 
+                20
+              </Text>
+            </View>,
+            <View
+              useNativeDriver={true}
+            >
+              <Text
+                useNativeDriver={true}
+              >
+                300
+              </Text>
+            </View>,
+          ],
+          "padding-20": true,
+          "row": true,
+          "spread": true,
+          "useNativeDriver": true,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Text
+                  h1={true}
+                  marginB-10={true}
+                  useNativeDriver={true}
+                >
+                  Test Name
+                </Text>,
+                <Text
+                  useNativeDriver={true}
+                >
+                  10
+                   / 
+                  20
+                </Text>,
+              ],
+              "useNativeDriver": true,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Test Name",
+                  "h1": true,
+                  "marginB-10": true,
+                  "useNativeDriver": true,
+                },
+                "ref": null,
+                "rendered": "Test Name",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    10,
+                    " / ",
+                    20,
+                  ],
+                  "useNativeDriver": true,
+                },
+                "ref": null,
+                "rendered": Array [
+                  10,
+                  " / ",
+                  20,
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Text
+                useNativeDriver={true}
+              >
+                300
+              </Text>,
+              "useNativeDriver": true,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": 300,
+                "useNativeDriver": true,
+              },
+              "ref": null,
+              "rendered": 300,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "backgroundColor": "#e32d2f",
+          "height": 3,
+          "progress": 50,
+          "progressBackgroundColor": "#FCECEC",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "borderRadius": 3,
+        "children": Array [
+          <View
+            padding-20={true}
+            row={true}
+            spread={true}
+            useNativeDriver={true}
+          >
+            <View
+              useNativeDriver={true}
+            >
+              <Text
+                h1={true}
+                marginB-10={true}
+                useNativeDriver={true}
+              >
+                Test Name
+              </Text>
+              <Text
+                useNativeDriver={true}
+              >
+                10
+                 / 
+                20
+              </Text>
+            </View>
+            <View
+              useNativeDriver={true}
+            >
+              <Text
+                useNativeDriver={true}
+              >
+                300
+              </Text>
+            </View>
+          </View>,
+          <ProgressBar
+            backgroundColor="#e32d2f"
+            height={3}
+            progress={50}
+            progressBackgroundColor="#FCECEC"
+          />,
+        ],
+        "enableShadow": true,
+        "flex": true,
+        "marginH-10": true,
+        "marginT-15": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <View
+                useNativeDriver={true}
+              >
+                <Text
+                  h1={true}
+                  marginB-10={true}
+                  useNativeDriver={true}
+                >
+                  Test Name
+                </Text>
+                <Text
+                  useNativeDriver={true}
+                >
+                  10
+                   / 
+                  20
+                </Text>
+              </View>,
+              <View
+                useNativeDriver={true}
+              >
+                <Text
+                  useNativeDriver={true}
+                >
+                  300
+                </Text>
+              </View>,
+            ],
+            "padding-20": true,
+            "row": true,
+            "spread": true,
+            "useNativeDriver": true,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Text
+                    h1={true}
+                    marginB-10={true}
+                    useNativeDriver={true}
+                  >
+                    Test Name
+                  </Text>,
+                  <Text
+                    useNativeDriver={true}
+                  >
+                    10
+                     / 
+                    20
+                  </Text>,
+                ],
+                "useNativeDriver": true,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Test Name",
+                    "h1": true,
+                    "marginB-10": true,
+                    "useNativeDriver": true,
+                  },
+                  "ref": null,
+                  "rendered": "Test Name",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      10,
+                      " / ",
+                      20,
+                    ],
+                    "useNativeDriver": true,
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    10,
+                    " / ",
+                    20,
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Text
+                  useNativeDriver={true}
+                >
+                  300
+                </Text>,
+                "useNativeDriver": true,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": 300,
+                  "useNativeDriver": true,
+                },
+                "ref": null,
+                "rendered": 300,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "backgroundColor": "#e32d2f",
+            "height": 3,
+            "progress": 50,
+            "progressBackgroundColor": "#FCECEC",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

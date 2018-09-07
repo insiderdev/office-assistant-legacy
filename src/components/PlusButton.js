@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   View,
   Image,
@@ -7,7 +7,7 @@ import {
 
 import { colors } from '../styles';
 
-export default function HomeView(props) {
+export default function PlusButton(props): React.Node {
   return (
     <TouchableOpacity
       style={{
