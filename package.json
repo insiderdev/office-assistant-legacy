@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "run:ios": "react-native run-ios",
     "run:android": "react-native run-android",
     "lint": "./node_modules/eslint/bin/eslint.js src",

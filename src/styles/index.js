@@ -1,3 +1,6 @@
+/**
+ * @flow
+ */
 import { Typography, Colors, Assets } from 'react-native-ui-lib';
 import { Dimensions } from 'react-native';
 
@@ -7,8 +10,8 @@ import fonts from './fonts';
 const { width, height } = Dimensions.get('window');
 
 // Guideline sizes are based on standard ~5" screen mobile device
-const guidelineBaseWidth = 350;
-const guidelineBaseHeight = 680;
+const guidelineBaseWidth: number = 350;
+const guidelineBaseHeight: number = 680;
 
 Colors.loadColors(colors);
 
@@ -52,9 +55,9 @@ Assets.loadAssetsGroup('icons', {
   chevronDown: require('../../assets/icons/chevron-down.png'),
 });
 
-const scale = size => width / guidelineBaseWidth * size;
-const verticalScale = size => height / guidelineBaseHeight * size;
-const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
+const scale = (size: number): number => width / guidelineBaseWidth * size;
+const verticalScale = (size: number): number => height / guidelineBaseHeight * size;
+const moderateScale = (size: number, factor: number = 0.5): number => size + (scale(size) - size) * factor;
 
 export {
   colors,
