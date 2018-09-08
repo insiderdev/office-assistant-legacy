@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   Button,
   Switch,
+  Picker,
 } from 'react-native-ui-lib';
 
 import { colors, fonts, scale } from '../../styles';
@@ -35,7 +36,69 @@ export type AddNewViewPropsType = {
   setEndTime: (any) => void,
   handleTimePicked: (any) => void,
   closeTimePicker: () => void,
+  frequency: {
+    label: string,
+    value: number,
+  },
+  setFrequency: (number) => void,
 };
+
+const frequencyPickerValues = [
+  { label: '1', value: 1 },
+  { label: '2', value: 2 },
+  { label: '3', value: 3 },
+  { label: '4', value: 4 },
+  { label: '5', value: 5 },
+  { label: '6', value: 6 },
+  { label: '7', value: 7 },
+  { label: '8', value: 8 },
+  { label: '9', value: 9 },
+  { label: '10', value: 10 },
+  { label: '11', value: 11 },
+  { label: '12', value: 12 },
+  { label: '13', value: 13 },
+  { label: '14', value: 14 },
+  { label: '15', value: 15 },
+  { label: '16', value: 16 },
+  { label: '17', value: 17 },
+  { label: '18', value: 18 },
+  { label: '19', value: 19 },
+  { label: '20', value: 20 },
+  { label: '21', value: 21 },
+];
+
+export function getNotificationsInterval(
+  startTime: Moment,
+  endTime: Moment,
+  frequency: number,
+): { hours: number, minutes: number } {
+  const diffInMinutes = Math.abs(Math.round(startTime.diff(endTime, 'minutes', true)));
+
+  // We need this +1 to get a correct distribution
+  const intervalInMinutes = Math.round(diffInMinutes / (frequency + 1));
+
+  const result = { hours: 0, minutes: 0 };
+  if (intervalInMinutes >= 60) {
+    result.hours = Math.round(intervalInMinutes / 60);
+  }
+  result.minutes = Math.round(intervalInMinutes % 60);
+
+  return result;
+}
+
+export function getFormattedNotificationsInterval(
+  startTime: Moment,
+  endTime: Moment,
+  frequency: number,
+) : string {
+  const interval = getNotificationsInterval(startTime, endTime, frequency);
+  let result = 'each';
+  if (interval.hours) result += ` ${interval.hours}h`;
+  if (interval.hours && interval.minutes) result += ' and';
+  if (interval.minutes) result += ` ${interval.minutes}m`;
+
+  return result;
+}
 
 export default function AddNewView(props: AddNewViewPropsType): React.Node {
   const {
@@ -50,6 +113,8 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
     setEndTimePickerVisible,
     handleTimePicked,
     closeTimePicker,
+    frequency,
+    setFrequency,
   } = props;
 
   return (
@@ -71,21 +136,6 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
           <Text darkGray h4>Remind me to:</Text>
           <View row spread marginT-7 centerV>
             <Text h3 black>Drink Water</Text>
-            <Image
-              assetGroup="icons"
-              assetName="chevronDown"
-              style={{
-                width: 14,
-              }}
-              resizeMode="contain"
-            />
-          </View>
-        </View>
-
-        <View marginV-15>
-          <Text darkGray h4>How many times?</Text>
-          <View row spread marginT-7 centerV>
-            <Text h3 black>10 times</Text>
             <Image
               assetGroup="icons"
               assetName="chevronDown"
@@ -130,6 +180,41 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
             </View>
           </View>
         </TouchableOpacity>
+
+        <Picker
+          title="Native Picker"
+          placeholder="Pick a Language"
+          value={frequency}
+          onChange={setFrequency}
+          containerStyle={{ marginTop: 20 }}
+          topBarProps={{ title: 'Frequency' }}
+          renderPicker={() => (
+            <View flex marginV-15>
+              <Text darkGray h4>How many times?</Text>
+              <View row spread marginT-7 centerV>
+                <Text h3 black>
+                  {frequency.value} times ({getFormattedNotificationsInterval(startTime, endTime, frequency.value)})
+                </Text>
+                <Image
+                  assetGroup="icons"
+                  assetName="chevronDown"
+                  style={{
+                    width: 14,
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          )}
+        >
+          { frequencyPickerValues.map(option => (
+            <Picker.Item
+              key={option.value}
+              value={option.value}
+              label={`${option.value} times (${getFormattedNotificationsInterval(startTime, endTime, option.value)})`}
+            />
+          ))}
+        </Picker>
 
         <View marginV-15>
           <View row spread marginT-7 centerV>

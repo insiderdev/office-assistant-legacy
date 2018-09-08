@@ -9,6 +9,7 @@ export default compose(
   withState('endTime', 'setEndTime', moment().hour(17).minute(0)),
   withState('isStartTimePickerVisible', 'setStartTimePickerVisible', false),
   withState('isEndTimePickerVisible', 'setEndTimePickerVisible', false),
+  withState('frequency', 'setFrequency', { label: '8', value: 8 }),
   withHandlers({
     closeTimePicker: (props: AddNewViewPropsType) => () => {
       props.setStartTimePickerVisible(false);
