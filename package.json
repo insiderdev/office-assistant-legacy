@@ -13,8 +13,10 @@
     "flow": "./node_modules/flow-bin/cli.js"
   },
   "dependencies": {
+    "moment": "^2.22.2",
     "react": "16.4.2",
     "react-native": "0.56.0",
+    "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-ui-lib": "^3.3.205",
     "react-navigation": "^2.12.1",
     "react-redux": "^5.0.7",
@@ -27,13 +29,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta",
-    "babel-core": "^7.0.0-beta",
-    "babel-runtime": "^7.0.0-beta",
     "@babel/preset-flow": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-beta",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.4.2",
     "babel-preset-react-native": "^5",
+    "babel-runtime": "^7.0.0-beta",
+    "enzyme": "^3.5.1",
+    "enzyme-adapter-react-16": "^1.4.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -41,11 +45,9 @@
     "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.75.0",
     "jest": "23.5.0",
-    "enzyme": "^3.5.1",
-    "enzyme-adapter-react-16": "^1.4.0",
-    "react-test-renderer": "16.4.1",
     "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "react-test-renderer": "16.4.1"
   },
   "jest": {
     "preset": "react-native",

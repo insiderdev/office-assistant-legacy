@@ -30,7 +30,7 @@ export default function PlusButton(props): React.Node {
       >
         <Image
           style={{
-            with: 14,
+            width: 14,
             height: 14,
           }}
           assetName="plus"

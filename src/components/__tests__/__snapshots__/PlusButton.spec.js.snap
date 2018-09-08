@@ -39,7 +39,7 @@ ShallowWrapper {
           style={
             Object {
               "height": 14,
-              "with": 14,
+              "width": 14,
             }
           }
         />
@@ -68,7 +68,7 @@ ShallowWrapper {
           style={
             Object {
               "height": 14,
-              "with": 14,
+              "width": 14,
             }
           }
         />,
@@ -91,7 +91,7 @@ ShallowWrapper {
           "resizeMode": "contain",
           "style": Object {
             "height": 14,
-            "with": 14,
+            "width": 14,
           },
         },
         "ref": null,
@@ -128,7 +128,7 @@ ShallowWrapper {
             style={
               Object {
                 "height": 14,
-                "with": 14,
+                "width": 14,
               }
             }
           />
@@ -157,7 +157,7 @@ ShallowWrapper {
             style={
               Object {
                 "height": 14,
-                "with": 14,
+                "width": 14,
               }
             }
           />,
@@ -180,7 +180,7 @@ ShallowWrapper {
             "resizeMode": "contain",
             "style": Object {
               "height": 14,
-              "with": 14,
+              "width": 14,
             },
           },
           "ref": null,

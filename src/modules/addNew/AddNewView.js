@@ -1,10 +1,13 @@
 /**
  * @flow
  */
-import React from 'react';
+import * as React from 'react';
 import {
   StyleSheet,
 } from 'react-native';
+import moment from 'moment';
+import type Moment from 'moment';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   View,
   Text,
@@ -13,21 +16,40 @@ import {
   Button,
   Switch,
 } from 'react-native-ui-lib';
+
 import { colors, fonts, scale } from '../../styles';
 
-type AddNewViewPropsType = {
+export type AddNewViewPropsType = {
   autoConfirm: boolean,
   setAutoConfirm: (boolean) => void,
   navigation: {
     pop: () => void,
-  }
+  },
+  isStartTimePickerVisible: boolean,
+  setStartTimePickerVisible: (boolean) => void,
+  isEndTimePickerVisible: boolean,
+  setEndTimePickerVisible: (boolean) => void,
+  startTime: Moment,
+  endTime: Moment,
+  setStartTime: (any) => void,
+  setEndTime: (any) => void,
+  handleTimePicked: (any) => void,
+  closeTimePicker: () => void,
 };
 
-export default function AddNewView(props: AddNewViewPropsType) {
+export default function AddNewView(props: AddNewViewPropsType): React.Node {
   const {
     autoConfirm,
     setAutoConfirm,
     navigation,
+    startTime,
+    endTime,
+    isStartTimePickerVisible,
+    setStartTimePickerVisible,
+    isEndTimePickerVisible,
+    setEndTimePickerVisible,
+    handleTimePicked,
+    closeTimePicker,
   } = props;
 
   return (
@@ -75,35 +97,39 @@ export default function AddNewView(props: AddNewViewPropsType) {
           </View>
         </View>
 
-        <View marginV-15>
-          <Text darkGray h4>Start time:</Text>
-          <View row spread marginT-7 centerV>
-            <Text h3 black>8:00 am</Text>
-            <Image
-              assetGroup="icons"
-              assetName="chevronDown"
-              style={{
-                width: 14,
-              }}
-              resizeMode="contain"
-            />
+        <TouchableOpacity onPress={() => setStartTimePickerVisible(true)}>
+          <View marginV-15>
+            <Text darkGray h4>Start time:</Text>
+            <View row spread marginT-7 centerV>
+              <Text h3 black>{moment(startTime).format('hh:mm A')}</Text>
+              <Image
+                assetGroup="icons"
+                assetName="chevronDown"
+                style={{
+                  width: 14,
+                }}
+                resizeMode="contain"
+              />
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
-        <View marginV-15>
-          <Text darkGray h4>End time:</Text>
-          <View row spread marginT-7 centerV>
-            <Text h3 black>5:00 pm</Text>
-            <Image
-              assetGroup="icons"
-              assetName="chevronDown"
-              style={{
-                width: 14,
-              }}
-              resizeMode="contain"
-            />
+        <TouchableOpacity onPress={() => setEndTimePickerVisible(true)}>
+          <View marginV-15>
+            <Text darkGray h4>End time:</Text>
+            <View row spread marginT-7 centerV>
+              <Text h3 black>{moment(endTime).format('hh:mm A')}</Text>
+              <Image
+                assetGroup="icons"
+                assetName="chevronDown"
+                style={{
+                  width: 14,
+                }}
+                resizeMode="contain"
+              />
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <View marginV-15>
           <View row spread marginT-7 centerV>
@@ -136,6 +162,15 @@ export default function AddNewView(props: AddNewViewPropsType) {
           testID="add-item-button"
         />
       </View>
+
+      <DateTimePicker
+        mode="time"
+        isVisible={isStartTimePickerVisible || isEndTimePickerVisible}
+        onConfirm={handleTimePicked}
+        onCancel={closeTimePicker}
+        date={isStartTimePickerVisible ? startTime.toDate() : endTime.toDate()}
+        is24Hour
+      />
     </View>
   );
 }
