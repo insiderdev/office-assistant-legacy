@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 import moment from 'moment';
-import React from 'react';
-import Enzyme from 'enzyme';
-import AddNewView, {
+import {
   getNotificationsInterval,
   getFormattedNotificationsInterval,
 } from './AddNewView';
@@ -42,31 +40,5 @@ describe('getFormattedNotificationsInterval function', () => {
       moment().hour(18).minute(0),
       7,
     )).toEqual('each 1h and 8m');
-  });
-});
-
-describe('AddNewView component', () => {
-  it('renders as expected', () => {
-    const wrapper = Enzyme.shallow(
-      <AddNewView
-        autoConfirm
-        setAutoConfirm={() => {}}
-        navigation={{}}
-        startTime={moment('2018-02-02').hour(8).minute(0).second(0)}
-        endTime={moment('2018-02-02').hour(11).minute(0).second(0)}
-        isStartTimePickerVisible
-        setStartTimePickerVisible={() => {}}
-        isEndTimePickerVisible
-        setEndTimePickerVisible={() => {}}
-        handleTimePicked={() => {}}
-        closeTimePicker={() => {}}
-        frequency={{ label: '8', value: 8 }}
-        setFrequency={() => {}}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-
-    wrapper.setProps({ autoConfirm: false });
-    expect(wrapper).toMatchSnapshot();
   });
 });
