@@ -14,12 +14,12 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  Button,
   Switch,
   Picker,
 } from 'react-native-ui-lib';
 
-import { colors, fonts, scale } from '../../styles';
+import { Button } from '../../components';
+import { colors, fonts } from '../../styles';
 
 export type AddNewViewPropsType = {
   autoConfirm: boolean,
@@ -298,16 +298,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
 
       <View paddingH-30 paddingV-10 centerH venterV>
         <Button
-          backgroundColor={colors.red}
           label="add new"
-          labelStyle={{
-            fontFamily: fonts.primary,
-            fontWeight: 'bold',
-          }}
-          style={{
-            paddingVertical: 10,
-            width: scale(140),
-          }}
           testID="add-item-button"
         />
       </View>

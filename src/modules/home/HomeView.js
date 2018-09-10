@@ -2,13 +2,19 @@ import React from 'react';
 import {
   View,
   Text,
-  Button,
   Image,
 } from 'react-native-ui-lib';
 
-import { colors, fonts, scale } from '../../styles';
+import { Button } from '../../components';
 
-export default function HomeView() {
+type Props = {
+  navigation: {
+    navigate: (string) => void,
+  },
+  setAppOpened: () => void,
+};
+
+export default function HomeView({ navigation, setAppOpened }: Props) {
   return (
     <View flex centerV padding-20 bg-white>
       <View flex centerV centerH padding-10>
@@ -26,19 +32,16 @@ export default function HomeView() {
         </Text>
       </View>
 
-      <Button
-        backgroundColor={colors.red}
-        label="Let's get started"
-        labelStyle={{
-          fontFamily: fonts.primary,
-          fontWeight: 'bold',
-        }}
-        borderRadius={scale(5)}
-        style={{
-          paddingVertical: scale(13),
-        }}
-        testID="get-started-button"
-      />
+      <View h-center v-center paddingH-50 marginB-20>
+        <Button
+          onPress={() => {
+            setAppOpened();
+            navigation.navigate('MainScreen');
+          }}
+          label="Let's get started"
+          testID="get-started-button"
+        />
+      </View>
     </View>
   );
 }

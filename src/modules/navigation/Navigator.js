@@ -1,16 +1,22 @@
 import {
+  createSwitchNavigator,
   createStackNavigator,
 } from 'react-navigation';
 
-import Home from '../home/HomeView';
+import Home from '../home/HomeViewContainer';
 import NotificationsList from '../notificationsList/NotificationsListView';
 import AddNew from '../addNew/AddNewViewContainer';
 
-export default createStackNavigator({
+export default createSwitchNavigator({
   Home,
-  NotificationsList,
-  AddNew,
+  MainScreen: createStackNavigator({
+    NotificationsList,
+    AddNew,
+  }, {
+    headerMode: 'none',
+    initialRouteName: 'NotificationsList',
+  }),
 }, {
   headerMode: 'none',
-  initialRouteName: 'NotificationsList',
+  initialRouteName: 'Home',
 });

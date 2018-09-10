@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
-import './src/styles';
+import { colors } from './src/styles';
 
 import { store, persistor } from './src/redux/store';
 
@@ -14,7 +14,7 @@ export default function App() {
       <PersistGate
         loading={(
           <View style={styles.container}>
-            <ActivityIndicator color="#FFFFFF" />
+            <ActivityIndicator color={colors.red} />
           </View>
         )}
         persistor={persistor}
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
 });
