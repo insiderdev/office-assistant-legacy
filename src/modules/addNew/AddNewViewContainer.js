@@ -10,6 +10,8 @@ export default compose(
   withState('isStartTimePickerVisible', 'setStartTimePickerVisible', false),
   withState('isEndTimePickerVisible', 'setEndTimePickerVisible', false),
   withState('frequency', 'setFrequency', { label: '8', value: 8 }),
+  withState('notificationItem', 'setNotificationItem', { label: 'Drink water', value: 1 }),
+  withState('customNotificationItem', 'setCustomNotificationItem', null),
   withHandlers({
     closeTimePicker: (props: AddNewViewPropsType) => () => {
       props.setStartTimePickerVisible(false);

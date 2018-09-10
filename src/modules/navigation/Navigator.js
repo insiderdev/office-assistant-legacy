@@ -12,5 +12,5 @@ export default createStackNavigator({
   AddNew,
 }, {
   headerMode: 'none',
-  initialRouteName: 'AddNew',
+  initialRouteName: 'NotificationsList',
 });

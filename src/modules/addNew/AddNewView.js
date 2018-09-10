@@ -4,6 +4,7 @@
 import * as React from 'react';
 import {
   StyleSheet,
+  TextInput,
 } from 'react-native';
 import moment from 'moment';
 import type Moment from 'moment';
@@ -36,14 +37,26 @@ export type AddNewViewPropsType = {
   setEndTime: (any) => void,
   handleTimePicked: (any) => void,
   closeTimePicker: () => void,
-  frequency: {
+  frequency: {|
     label: string,
     value: number,
-  },
+  |},
+  notificationItem: {|
+    label: string,
+    value: number,
+  |},
   setFrequency: (number) => void,
+  setNotificationItem: (number) => void,
+  customNotificationItem: string | null,
+  setCustomNotificationItem: (string) => void,
 };
 
-const frequencyPickerValues: Array<{ label: string, value: number }> = [
+type PickerItemsType = Array<{|
+  label: string,
+  value: number,
+|}>
+
+const frequencyPickerValues: PickerItemsType = [
   { label: '1', value: 1 },
   { label: '2', value: 2 },
   { label: '3', value: 3 },
@@ -65,6 +78,14 @@ const frequencyPickerValues: Array<{ label: string, value: number }> = [
   { label: '19', value: 19 },
   { label: '20', value: 20 },
   { label: '21', value: 21 },
+];
+
+const notificationsNames: PickerItemsType = [
+  { label: 'Custom (define your own)', value: 0 },
+  { label: 'Drink water', value: 1 },
+  { label: 'Standup', value: 2 },
+  { label: 'Short walk', value: 3 },
+  { label: 'Stretch', value: 4 },
 ];
 
 export function getNotificationsInterval(
@@ -115,6 +136,10 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
     closeTimePicker,
     frequency,
     setFrequency,
+    notificationItem,
+    setNotificationItem,
+    customNotificationItem,
+    setCustomNotificationItem,
   } = props;
 
   return (
@@ -132,20 +157,59 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
       </View>
 
       <View bg-white padding-20 marginV-30>
-        <View marginV-15>
-          <Text darkGray h4>Remind me to:</Text>
-          <View row spread marginT-7 centerV>
-            <Text h3 black>Drink Water</Text>
-            <Image
-              assetGroup="icons"
-              assetName="chevronDown"
-              style={{
-                width: 14,
-              }}
-              resizeMode="contain"
-            />
+        {/* User picked to enter custom value */}
+        { notificationItem.value === 0 && (
+          <View marginV-15>
+            <Text darkGray h4>Remind me to:</Text>
+            <View marginT-15 centerV>
+              <TextInput
+                value={customNotificationItem}
+                placeholder="Write your own reminder"
+                onChangeText={setCustomNotificationItem}
+                numberOfLines={1}
+                style={{
+                  fontSize: 16,
+                  lineHeight: 22,
+                  fontFamily: fonts.primary,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
           </View>
-        </View>
+        )}
+
+        { notificationItem.value !== 0 && (
+          <Picker
+            value={notificationItem}
+            onChange={setNotificationItem}
+            containerStyle={{ marginTop: 20 }}
+            topBarProps={{ title: 'Remind me to' }}
+            renderPicker={() => (
+              <View flex marginV-15>
+                <Text darkGray h4>Remind me to:</Text>
+                <View row spread marginT-7 centerV>
+                  <Text h3 black>{notificationItem.label}</Text>
+                  <Image
+                    assetGroup="icons"
+                    assetName="chevronDown"
+                    style={{
+                      width: 14,
+                    }}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            )}
+          >
+            { notificationsNames.map(option => (
+              <Picker.Item
+                key={option.value}
+                value={option.value}
+                label={option.label}
+              />
+            ))}
+          </Picker>
+        )}
 
         <TouchableOpacity onPress={() => setStartTimePickerVisible(true)}>
           <View marginV-15>
