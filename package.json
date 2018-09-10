@@ -19,7 +19,7 @@
     "react-native": "0.56.0",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-ui-lib": "^3.3.205",
-    "react-navigation": "^2.12.1",
+    "react-navigation": "^2.13.0",
     "react-redux": "^5.0.7",
     "recompose": "^0.30.0",
     "redux": "^4.0.0",
