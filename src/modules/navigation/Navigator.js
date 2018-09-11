@@ -4,7 +4,7 @@ import {
 } from 'react-navigation';
 
 import Home from '../home/HomeViewContainer';
-import NotificationsList from '../notificationsList/NotificationsListView';
+import NotificationsList from '../notificationsList/NotificationsListContainer';
 import AddNew from '../addNew/AddNewViewContainer';
 
 export default createSwitchNavigator({

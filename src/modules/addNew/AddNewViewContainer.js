@@ -1,9 +1,17 @@
 import { compose, withState, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
-import AddNewView, { AddNewViewPropsType } from './AddNewView';
+import AddNewView, { AddNewViewPropsType, getNotificationsInterval } from './AddNewView';
+import { addNotification } from '../notificationsList/NotificationsListState';
 
 export default compose(
+  connect(
+    null,
+    dispatch => ({
+      addNotification: notification => dispatch(addNotification(notification)),
+    }),
+  ),
   withState('autoConfirm', 'setAutoConfirm', false),
   withState('startTime', 'setStartTime', moment().hour(8).minute(0)),
   withState('endTime', 'setEndTime', moment().hour(17).minute(0)),
@@ -31,6 +39,41 @@ export default compose(
       }
 
       props.closeTimePicker();
+    },
+    addNewNotification: (props: AddNewViewPropsType) => () => {
+      const {
+        autoConfirm,
+        startTime,
+        endTime,
+        frequency,
+        notificationItem,
+        customNotificationItem,
+        addNotification: add,
+        navigation,
+      } = props;
+
+      if (notificationItem.value === 0 && !customNotificationItem) return;
+
+      const notificationInterval = getNotificationsInterval(startTime, endTime, frequency.value);
+      const startTimeCopy = moment(startTime);
+      const notificationsTimes = [];
+      for (let i = 0; i < frequency.value; i += 1) {
+        startTimeCopy.add(notificationInterval.hours, 'hours').add(notificationInterval.minutes, 'minutes');
+        notificationsTimes.push(moment(startTimeCopy));
+      }
+
+      add({
+        title: customNotificationItem || notificationItem.label,
+        startTime,
+        endTime,
+        frequency: frequency.value,
+        notificationsTimes,
+        notificationsIds: [],
+        autoConfirm,
+        done: 0,
+      });
+
+      navigation.pop();
     },
   }),
 )(AddNewView);

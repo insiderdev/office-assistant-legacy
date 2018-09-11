@@ -11,43 +11,34 @@ import {
 } from 'react-native-ui-lib';
 
 import { PlusButton, NotificationCard } from '../../components';
+import type { NotificationItem } from './NotificationsListState';
 
 type NotificationListViewPropsType = {
   navigation: {
     navigate: (string) => void,
   },
+  notifications: Array<NotificationItem>,
 }
 
-export default function NotificationListView(props: NotificationListViewPropsType): React.Node {
-  const notifications = [{
-    name: 'Drink water',
-    done: 4,
-    total: 10,
-    nextNotificationSeconds: 100,
-    totalIntervalSeconds: 300,
-  }, {
-    name: 'Standup',
-    done: 5,
-    total: 10,
-    nextNotificationSeconds: 100,
-    totalIntervalSeconds: 300,
-  }];
-
+export default function NotificationListView({ navigation, notifications }: NotificationListViewPropsType): React.Node {
   return (
     <View flex centerV bg-lightGray>
+      <View paddingH-20 marginT-30 marginB-5>
+        <Text h1>Office Assistant</Text>
+      </View>
+
       <FlatList
-        style={{ paddingTop: 30 }}
         data={notifications}
-        renderItem={({ item }) => <NotificationCard {...item} />}
+        renderItem={({ item }) => <NotificationCard notification={item} />}
         ListEmptyComponent={(
-          <View>
+          <View flex centerH centerV paddingV-200>
             <Text h1>No items!</Text>
             <Text p>Add them by clicking the button</Text>
           </View>
         )}
       />
 
-      <PlusButton onPress={() => props.navigation.navigate('AddNew')} />
+      <PlusButton onPress={() => navigation.navigate('AddNew')} />
     </View>
   );
 }

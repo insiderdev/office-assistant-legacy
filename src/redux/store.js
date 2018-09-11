@@ -25,6 +25,7 @@ const enhancer = composeEnhancers(...enhancers);
 const persistConfig = {
   key: 'root',
   storage,
+  // blacklist: ['notifications'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

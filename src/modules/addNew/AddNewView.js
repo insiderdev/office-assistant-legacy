@@ -49,6 +49,7 @@ export type AddNewViewPropsType = {
   setNotificationItem: (number) => void,
   customNotificationItem: string | null,
   setCustomNotificationItem: (string) => void,
+  addNewNotification: () => void,
 };
 
 type PickerItemsType = Array<{|
@@ -140,6 +141,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
     setNotificationItem,
     customNotificationItem,
     setCustomNotificationItem,
+    addNewNotification,
   } = props;
 
   return (
@@ -300,6 +302,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
         <Button
           label="add new"
           testID="add-item-button"
+          onPress={addNewNotification}
         />
       </View>
 
