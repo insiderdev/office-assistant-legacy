@@ -33,7 +33,34 @@ export default class NotificationCard extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const { notification } = props;
+    this._setNextIteration = this._setNextIteration.bind(this);
+    this._timerTick = this._timerTick.bind(this);
+    this._setTimer = this._setTimer.bind(this);
+    this._clearTimer = this._clearTimer.bind(this);
+
+    this._setNextIteration();
+  }
+
+  componentWillUnmount() {
+    this._clearTimer();
+  }
+
+  _addLeadingZero = (n: number): string => (`${n}`.length < 2 ? `0${n}` : `${n}`);
+
+  _setTimer = () => {
+    if (this.state.nextNotificationDiffSeconds) {
+      this._interval = setInterval(this._timerTick, 1000);
+    }
+  };
+
+  _clearTimer = () => {
+    if (this._interval) {
+      clearInterval(this._interval);
+    }
+  };
+
+  _setNextIteration = () => {
+    const { notification } = this.props;
     let nextNotification = moment();
 
     let notificationNumber = 0;
@@ -49,7 +76,11 @@ export default class NotificationCard extends React.Component<Props, State> {
       }
     }
 
-    this.state = {
+    if (moment() < moment(notification.startTime) || moment() > moment(notification.endTime)) {
+      nextNotification = null;
+    }
+
+    const newState = {
       nextNotificationDiffSeconds: nextNotification ?
         Math.abs(moment().diff(
           moment().hour(nextNotification.hour()).minute(nextNotification.minute()).second(0),
@@ -62,25 +93,27 @@ export default class NotificationCard extends React.Component<Props, State> {
         notification.frequency),
     };
 
-    this._timerTick = this._timerTick.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.state.nextNotificationDiffSeconds) {
-      this._interval = setInterval(this._timerTick, 1000);
+    if (this.state) {
+      this.setState({
+        ...newState,
+      });
+    } else {
+      this.state = newState;
     }
-  }
 
-  componentWillUnmount() {
-    if (this._interval) {
-      clearInterval(this._interval);
+    if (nextNotification) {
+      this._setTimer();
     }
-  }
+  };
 
   _timerTick = () => {
     this.setState(prevState => ({
       nextNotificationDiffSeconds: prevState.nextNotificationDiffSeconds - 1,
     }));
+    if (this.state.nextNotificationDiffSeconds < 0) {
+      clearInterval(this._interval);
+      this._setNextIteration();
+    }
   };
 
   render() {
@@ -134,17 +167,20 @@ export default class NotificationCard extends React.Component<Props, State> {
               >
                 <Image
                   assetGroup="icons"
-                  assetName="check"
+                  assetName={this.state.nextNotificationDiffSeconds <= 0 ? 'checkDone' : 'check'}
                   resizeMode="contain"
                   style={{ width: 12, height: 12 }}
                 />
               </View>
             </View>
             <View centerH style={{ width: 40 }}>
-              { this.state.nextNotificationDiffSeconds && (
+              { this.state.nextNotificationDiffSeconds <= 0 && (
+                <Text style={{ color: colors.darkBlue }}>00:00</Text>
+              )}
+              { this.state.nextNotificationDiffSeconds > 0 && (
                 <Text style={{ color: colors.darkBlue }}>
-                  {Math.floor(Math.abs(this.state.nextNotificationDiffSeconds) / 60)}:
-                  {Math.round(Math.abs(this.state.nextNotificationDiffSeconds) % 60)}
+                  {this._addLeadingZero(Math.floor(Math.abs(this.state.nextNotificationDiffSeconds) / 60))}:
+                  {this._addLeadingZero(Math.round(Math.abs(this.state.nextNotificationDiffSeconds) % 60))}
                 </Text>
               )}
             </View>
