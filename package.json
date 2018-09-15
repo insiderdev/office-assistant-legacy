@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "moment": "^2.22.2",
-    "react": "16.4.2",
+    "react": "16.5.1",
     "react-native": "0.56.0",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-progress": "^3.5.0",
