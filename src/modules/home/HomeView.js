@@ -23,7 +23,7 @@ export default function HomeView({ navigation, setAppOpened }: Props) {
           assetGroup="illustrations"
         />
         <View marginT-20 marginB-10>
-          <Text h1>Stay fit, while working!</Text>
+          <Text darkBlue h1>Stay fit, while working!</Text>
         </View>
         <Text p center darkGray>
           Simple, yet important reminders to get you

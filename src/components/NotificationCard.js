@@ -92,7 +92,7 @@ export default class NotificationCard extends React.Component<Props, State> {
       <Card borderRadius={3} marginH-20 marginT-15 flex>
         <View spread row padding-20>
           <View>
-            <Text marginB-10 h1>{notification.title}</Text>
+            <Text marginB-10 h1 darkBlue>{notification.title}</Text>
             <Text
               style={{
                 fontSize: 16,

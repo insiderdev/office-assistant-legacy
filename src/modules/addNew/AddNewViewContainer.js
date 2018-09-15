@@ -12,7 +12,7 @@ export default compose(
       addNotification: notification => dispatch(addNotification(notification)),
     }),
   ),
-  withState('skipWeekend', 'setSkipWeekend', false),
+  withState('skipWeekend', 'setSkipWeekend', true),
   withState('startTime', 'setStartTime', moment().hour(8).minute(0)),
   withState('endTime', 'setEndTime', moment().hour(17).minute(0)),
   withState('isStartTimePickerVisible', 'setStartTimePickerVisible', false),

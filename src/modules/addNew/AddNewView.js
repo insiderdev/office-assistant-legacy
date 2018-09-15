@@ -145,7 +145,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
   } = props;
 
   return (
-    <View flex bg-lightGray paddingV-30>
+    <View flex bg-lightGray paddingV-15>
       <View row centerV paddingH-20>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Image
@@ -158,12 +158,12 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
         <Text h2 marginL-15 darkBlue>Add New</Text>
       </View>
 
-      <View bg-white padding-20 marginV-30>
+      <View bg-white padding-20 marginV-15>
         {/* User picked to enter custom value */}
         { notificationItem.value === 0 && (
-          <View marginV-15>
+          <View>
             <Text darkGray h4>Remind me to:</Text>
-            <View marginT-15 centerV>
+            <View centerV>
               <TextInput
                 value={customNotificationItem}
                 placeholder="Write your own reminder"
@@ -174,6 +174,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
                   lineHeight: 22,
                   fontFamily: fonts.primary,
                   fontWeight: 'bold',
+                  margin: 0,
                 }}
               />
             </View>
