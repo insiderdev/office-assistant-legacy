@@ -12,7 +12,7 @@ export default compose(
       addNotification: notification => dispatch(addNotification(notification)),
     }),
   ),
-  withState('autoConfirm', 'setAutoConfirm', false),
+  withState('skipWeekend', 'setSkipWeekend', false),
   withState('startTime', 'setStartTime', moment().hour(8).minute(0)),
   withState('endTime', 'setEndTime', moment().hour(17).minute(0)),
   withState('isStartTimePickerVisible', 'setStartTimePickerVisible', false),
@@ -42,7 +42,7 @@ export default compose(
     },
     addNewNotification: (props: AddNewViewPropsType) => () => {
       const {
-        autoConfirm,
+        skipWeekend,
         startTime,
         endTime,
         frequency,
@@ -69,7 +69,7 @@ export default compose(
         frequency: frequency.value,
         notificationsTimes,
         notificationsIds: [],
-        autoConfirm,
+        skipWeekend,
         done: 0,
       });
 

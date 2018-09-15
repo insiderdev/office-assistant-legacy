@@ -18,6 +18,7 @@
     "react": "16.4.2",
     "react-native": "0.56.0",
     "react-native-modal-datetime-picker": "^6.0.0",
+    "react-native-progress": "^3.5.0",
     "react-native-ui-lib": "^3.3.205",
     "react-navigation": "^2.13.0",
     "react-redux": "^5.0.7",

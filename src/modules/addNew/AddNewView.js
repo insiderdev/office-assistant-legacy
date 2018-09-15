@@ -22,8 +22,8 @@ import { Button } from '../../components';
 import { colors, fonts } from '../../styles';
 
 export type AddNewViewPropsType = {
-  autoConfirm: boolean,
-  setAutoConfirm: (boolean) => void,
+  skipWeekend: boolean,
+  setSkipWeekend: (boolean) => void,
   navigation: {
     pop: () => void,
   },
@@ -124,8 +124,8 @@ export function getFormattedNotificationsInterval(
 
 export default function AddNewView(props: AddNewViewPropsType): React.Node {
   const {
-    autoConfirm,
-    setAutoConfirm,
+    skipWeekend,
+    setSkipWeekend,
     navigation,
     startTime,
     endTime,
@@ -284,15 +284,15 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
 
         <View marginV-15>
           <View row spread marginT-7 centerV>
-            <Text h3 black>Auto confirm</Text>
+            <Text h3 black>Skip Weekends</Text>
             <Switch
               height={24}
               width={55}
               thumbColor={colors.white}
               offColor={colors.gray}
               onColor={colors.red}
-              onValueChange={setAutoConfirm}
-              value={autoConfirm}
+              onValueChange={setSkipWeekend}
+              value={skipWeekend}
             />
           </View>
         </View>
