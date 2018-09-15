@@ -34,7 +34,7 @@ export default class NotificationCard extends React.Component<Props, State> {
     super(props);
 
     const { notification } = props;
-    let nextNotification = null;
+    let nextNotification = moment();
 
     let notificationNumber = 0;
     for (; notificationNumber < notification.notificationsTimes.length; notificationNumber += 1) {
