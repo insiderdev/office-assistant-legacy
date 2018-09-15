@@ -29,17 +29,13 @@ const initialState: State = {
 };
 
 export function addNotification(notification: NotificationItem): Action | AsyncAction {
-  return {
-    type: ADD_NOTIFICATION,
-    payload: notification,
-  };
   // TODO Create notifications here
-  // return (dispatch) => {
-  //   dispatch({
-  //     type: ADD_NOTIFICATION,
-  //     payload: notification,
-  //   });
-  // };
+  return (dispatch) => {
+    dispatch({
+      type: ADD_NOTIFICATION,
+      payload: notification,
+    });
+  };
 }
 
 export default function NotificationsListReducer(state: State = initialState, action: Action): State {
