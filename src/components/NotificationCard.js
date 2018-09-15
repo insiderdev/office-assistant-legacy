@@ -62,6 +62,10 @@ export default class NotificationCard extends React.Component<Props, State> {
   _setNextIteration = () => {
     const { notification } = this.props;
     let nextNotification = moment();
+    const notificationSecondsInterval = Math.round(
+      moment(notification.endTime)
+        .diff(moment(notification.startTime), 'second') /
+      notification.frequency);
 
     let notificationNumber = 0;
     for (; notificationNumber < notification.notificationsTimes.length; notificationNumber += 1) {
@@ -76,7 +80,11 @@ export default class NotificationCard extends React.Component<Props, State> {
       }
     }
 
-    if (moment() < moment(notification.startTime) || moment() > moment(notification.endTime)) {
+    if (
+      moment() < moment(notification.startTime) ||
+      moment() > moment(notification.endTime).subtract(notificationSecondsInterval, 'seconds') ||
+      notificationNumber === notification.frequency
+    ) {
       nextNotification = null;
     }
 
@@ -87,10 +95,7 @@ export default class NotificationCard extends React.Component<Props, State> {
           'second',
         )) : 0,
       notificationNumber,
-      notificationSecondsInterval: Math.round(
-        moment(notification.endTime)
-          .diff(moment(notification.startTime), 'second') /
-        notification.frequency),
+      notificationSecondsInterval,
     };
 
     if (this.state) {
