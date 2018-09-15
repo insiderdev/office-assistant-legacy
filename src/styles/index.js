@@ -55,6 +55,7 @@ Assets.loadAssetsGroup('icons', {
   chevronDown: require('../../assets/icons/chevron-down.png'),
   check: require('../../assets/icons/check.png'),
   checkDone: require('../../assets/icons/check-done.png'),
+  trash: require('../../assets/icons/trash.png'),
 });
 
 const scale = (size: number): number => width / guidelineBaseWidth * size;

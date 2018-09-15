@@ -1,5 +1,5 @@
 {
-  "name": "OfficeAssistant",
+  "name": "office-assistant",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "react-native": "0.56.0",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-progress": "^3.5.0",
+    "react-native-swipeable": "^0.6.0",
     "react-native-ui-lib": "^3.3.205",
     "react-navigation": "^2.13.0",
     "react-redux": "^5.0.7",

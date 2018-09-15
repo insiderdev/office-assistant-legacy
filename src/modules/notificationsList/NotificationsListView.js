@@ -18,9 +18,10 @@ type NotificationListViewPropsType = {
     navigate: (string) => void,
   },
   notifications: Array<NotificationItem>,
+  deleteNotification: (NotificationItem) => void,
 }
 
-export default function NotificationListView({ navigation, notifications }: NotificationListViewPropsType): React.Node {
+export default function NotificationListView(props: NotificationListViewPropsType): React.Node {
   return (
     <View flex centerV bg-lightGray>
       <View paddingH-20 marginT-20 marginB-5>
@@ -28,8 +29,15 @@ export default function NotificationListView({ navigation, notifications }: Noti
       </View>
 
       <FlatList
-        data={notifications}
-        renderItem={({ item }) => <NotificationCard notification={item} />}
+        data={props.notifications}
+        renderItem={({ item }) => (
+          <NotificationCard
+            notification={item}
+            onDelete={() => {
+              props.deleteNotification(item);
+            }}
+          />
+        )}
         ListEmptyComponent={(
           <View flex centerH centerV paddingV-200>
             <Text h1 darkBlue>No items!</Text>
@@ -38,7 +46,7 @@ export default function NotificationListView({ navigation, notifications }: Noti
         )}
       />
 
-      <PlusButton onPress={() => navigation.navigate('AddNew')} />
+      <PlusButton onPress={() => props.navigation.navigate('AddNew')} />
     </View>
   );
 }
