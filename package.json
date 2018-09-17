@@ -37,7 +37,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^7.0.0-beta",
     "babel-eslint": "^9.0.0",
-    "babel-jest": "23.4.2",
+    "babel-jest": "23.6.0",
     "babel-preset-react-native": "^5",
     "babel-runtime": "^7.0.0-beta",
     "enzyme": "^3.5.1",
