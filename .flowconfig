@@ -27,6 +27,7 @@ node_modules/react-native/flow/
 node_modules/react-native/flow-github/
 
 [options]
+esproposal.optional_chaining=enable
 emoji=true
 
 module.system=haste
