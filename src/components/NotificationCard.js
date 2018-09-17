@@ -14,7 +14,6 @@ import moment from 'moment';
 import * as Progress from 'react-native-progress';
 import Swipeable from 'react-native-swipeable';
 
-
 import { colors, fonts } from '../styles';
 import type { NotificationItem } from '../modules/notificationsList/NotificationsListState';
 
@@ -33,6 +32,7 @@ export default class NotificationCard extends React.Component<Props, State> {
   // eslint-disable-next-line react/sort-comp
   _interval: any;
 
+  // Need to store swiper object to be able to dismiss it
   swipe: any;
 
   constructor(props: Props) {
@@ -43,6 +43,7 @@ export default class NotificationCard extends React.Component<Props, State> {
     this._setTimer = this._setTimer.bind(this);
     this._clearTimer = this._clearTimer.bind(this);
 
+    // Finding the next notification
     this._setNextIteration();
   }
 
@@ -50,6 +51,7 @@ export default class NotificationCard extends React.Component<Props, State> {
     this._clearTimer();
   }
 
+  // Should return '01' if 1 is provided
   _addLeadingZero = (n: number): string => (`${n}`.length < 2 ? `0${n}` : `${n}`);
 
   _setTimer = () => {
@@ -66,19 +68,33 @@ export default class NotificationCard extends React.Component<Props, State> {
 
   _setNextIteration = () => {
     const { notification } = this.props;
+
+    const now = moment();
     let nextNotification = moment();
+
+    // Seconds amount between notifications
     const notificationSecondsInterval = Math.round(
       moment(notification.endTime)
         .diff(moment(notification.startTime), 'second') /
       notification.frequency);
 
+    // Number of current notification
     let notificationNumber = 0;
     for (; notificationNumber < notification.notificationsTimes.length; notificationNumber += 1) {
-      const notTime = moment(notification.notificationsTimes[notificationNumber]);
-      if (notTime && moment()
-        .hour(notTime.hour())
-        .minute(notTime.minute())
-        .diff(moment(), 'second') > 0
+      const notTime = moment(
+        notification.notificationsTimes[notificationNumber],
+      )
+        .date(now.date())
+        .month(now.month())
+        .year(now.year());
+
+      if (
+        notTime &&
+        notTime
+          .diff(
+            moment(),
+            'second',
+          ) > 0
       ) {
         nextNotification = moment(notTime);
         break;
@@ -86,9 +102,13 @@ export default class NotificationCard extends React.Component<Props, State> {
     }
 
     if (
-      moment() < moment(notification.startTime) ||
-      moment() > moment(notification.endTime).subtract(notificationSecondsInterval, 'seconds') ||
-      notificationNumber === notification.frequency
+      now < moment(notification.startTime).date(now.date()).month(now.month()).year(now.year())
+      || now > moment(notification.endTime)
+        .subtract(notificationSecondsInterval, 'seconds')
+        .date(now.date())
+        .month(now.month())
+        .year(now.year())
+      || notificationNumber === notification.frequency
     ) {
       nextNotification = null;
     }
