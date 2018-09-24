@@ -5,6 +5,7 @@ import * as React from 'react';
 import {
   StyleSheet,
   TextInput,
+  SafeAreaView,
 } from 'react-native';
 import moment from 'moment';
 import type Moment from 'moment';
@@ -145,53 +146,124 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
   } = props;
 
   return (
-    <View flex bg-lightGray paddingV-15>
-      <View row centerV paddingH-20>
-        <TouchableOpacity onPress={() => navigation.pop()}>
-          <Image
-            assetGroup="icons"
-            assetName="arrowBack"
-            style={styles.image}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-        <Text h2 marginL-15 darkBlue>Add New</Text>
-      </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.lightGray }}>
+      <View flex bg-lightGray paddingV-15>
+        <View row centerV paddingH-20>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <Image
+              assetGroup="icons"
+              assetName="arrowBack"
+              style={styles.image}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+          <Text h2 marginL-15 darkBlue>Add New</Text>
+        </View>
 
-      <View bg-white padding-20 marginV-15>
-        {/* User picked to enter custom value */}
-        { notificationItem.value === 0 && (
-          <View>
-            <Text darkGray h4>Remind me to:</Text>
-            <View centerV>
-              <TextInput
-                value={customNotificationItem}
-                placeholder="Write your own reminder"
-                onChangeText={setCustomNotificationItem}
-                numberOfLines={1}
-                style={{
-                  fontSize: 16,
-                  lineHeight: 22,
-                  fontFamily: fonts.primary,
-                  fontWeight: 'bold',
-                  margin: 0,
-                }}
-              />
+        <View bg-white padding-20 marginV-15>
+          {/* User picked to enter custom value */}
+          { notificationItem.value === 0 && (
+            <View>
+              <Text darkGray h4>Remind me to:</Text>
+              <View centerV>
+                <TextInput
+                  value={customNotificationItem}
+                  placeholder="Write your own reminder"
+                  onChangeText={setCustomNotificationItem}
+                  numberOfLines={1}
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 22,
+                    fontFamily: fonts.primary,
+                    fontWeight: 'bold',
+                    margin: 0,
+                  }}
+                />
+              </View>
             </View>
-          </View>
-        )}
+          )}
 
-        { notificationItem.value !== 0 && (
+          { notificationItem.value !== 0 && (
+            <Picker
+              value={notificationItem}
+              onChange={setNotificationItem}
+              containerStyle={{ marginTop: 20 }}
+              topBarProps={{ title: 'Remind me to' }}
+              renderPicker={() => (
+                <View flex marginV-15>
+                  <Text darkGray h4>Remind me to:</Text>
+                  <View row spread marginT-7 centerV>
+                    <Text h3 black>{notificationItem.label}</Text>
+                    <Image
+                      assetGroup="icons"
+                      assetName="chevronDown"
+                      style={{
+                        width: 14,
+                      }}
+                      resizeMode="contain"
+                    />
+                  </View>
+                </View>
+              )}
+            >
+              { notificationsNames.map(option => (
+                <Picker.Item
+                  key={option.value}
+                  value={option.value}
+                  label={option.label}
+                />
+              ))}
+            </Picker>
+          )}
+
+          <TouchableOpacity onPress={() => setStartTimePickerVisible(true)}>
+            <View marginV-15>
+              <Text darkGray h4>Start time:</Text>
+              <View row spread marginT-7 centerV>
+                <Text h3 black>{moment(startTime).format('hh:mm A')}</Text>
+                <Image
+                  assetGroup="icons"
+                  assetName="chevronDown"
+                  style={{
+                    width: 14,
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => setEndTimePickerVisible(true)}>
+            <View marginV-15>
+              <Text darkGray h4>End time:</Text>
+              <View row spread marginT-7 centerV>
+                <Text h3 black>{moment(endTime).format('hh:mm A')}</Text>
+                <Image
+                  assetGroup="icons"
+                  assetName="chevronDown"
+                  style={{
+                    width: 14,
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+
           <Picker
-            value={notificationItem}
-            onChange={setNotificationItem}
+            title="Native Picker"
+            placeholder="Pick a Language"
+            value={frequency}
+            onChange={setFrequency}
             containerStyle={{ marginTop: 20 }}
-            topBarProps={{ title: 'Remind me to' }}
+            topBarProps={{ title: 'Frequency' }}
             renderPicker={() => (
               <View flex marginV-15>
-                <Text darkGray h4>Remind me to:</Text>
+                <Text darkGray h4>How many times?</Text>
                 <View row spread marginT-7 centerV>
-                  <Text h3 black>{notificationItem.label}</Text>
+                  <Text h3 black>
+                    {frequency.value} times ({getFormattedNotificationsInterval(startTime, endTime, frequency.value)})
+                  </Text>
                   <Image
                     assetGroup="icons"
                     assetName="chevronDown"
@@ -204,118 +276,49 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
               </View>
             )}
           >
-            { notificationsNames.map(option => (
+            { frequencyPickerValues.map(option => (
               <Picker.Item
                 key={option.value}
                 value={option.value}
-                label={option.label}
+                label={`${option.value} times (${getFormattedNotificationsInterval(startTime, endTime, option.value)})`}
               />
             ))}
           </Picker>
-        )}
 
-        <TouchableOpacity onPress={() => setStartTimePickerVisible(true)}>
           <View marginV-15>
-            <Text darkGray h4>Start time:</Text>
             <View row spread marginT-7 centerV>
-              <Text h3 black>{moment(startTime).format('hh:mm A')}</Text>
-              <Image
-                assetGroup="icons"
-                assetName="chevronDown"
-                style={{
-                  width: 14,
-                }}
-                resizeMode="contain"
+              <Text h3 black>Skip Weekends</Text>
+              <Switch
+                height={24}
+                width={55}
+                thumbColor={colors.white}
+                offColor={colors.gray}
+                onColor={colors.red}
+                onValueChange={setSkipWeekend}
+                value={skipWeekend}
               />
             </View>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => setEndTimePickerVisible(true)}>
-          <View marginV-15>
-            <Text darkGray h4>End time:</Text>
-            <View row spread marginT-7 centerV>
-              <Text h3 black>{moment(endTime).format('hh:mm A')}</Text>
-              <Image
-                assetGroup="icons"
-                assetName="chevronDown"
-                style={{
-                  width: 14,
-                }}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        <Picker
-          title="Native Picker"
-          placeholder="Pick a Language"
-          value={frequency}
-          onChange={setFrequency}
-          containerStyle={{ marginTop: 20 }}
-          topBarProps={{ title: 'Frequency' }}
-          renderPicker={() => (
-            <View flex marginV-15>
-              <Text darkGray h4>How many times?</Text>
-              <View row spread marginT-7 centerV>
-                <Text h3 black>
-                  {frequency.value} times ({getFormattedNotificationsInterval(startTime, endTime, frequency.value)})
-                </Text>
-                <Image
-                  assetGroup="icons"
-                  assetName="chevronDown"
-                  style={{
-                    width: 14,
-                  }}
-                  resizeMode="contain"
-                />
-              </View>
-            </View>
-          )}
-        >
-          { frequencyPickerValues.map(option => (
-            <Picker.Item
-              key={option.value}
-              value={option.value}
-              label={`${option.value} times (${getFormattedNotificationsInterval(startTime, endTime, option.value)})`}
-            />
-          ))}
-        </Picker>
-
-        <View marginV-15>
-          <View row spread marginT-7 centerV>
-            <Text h3 black>Skip Weekends</Text>
-            <Switch
-              height={24}
-              width={55}
-              thumbColor={colors.white}
-              offColor={colors.gray}
-              onColor={colors.red}
-              onValueChange={setSkipWeekend}
-              value={skipWeekend}
-            />
           </View>
         </View>
-      </View>
 
-      <View paddingH-30 paddingV-10 centerH venterV>
-        <Button
-          label="add new"
-          testID="add-item-button"
-          onPress={addNewNotification}
+        <View paddingH-30 paddingV-10 centerH venterV>
+          <Button
+            label="add new"
+            testID="add-item-button"
+            onPress={addNewNotification}
+          />
+        </View>
+
+        <DateTimePicker
+          mode="time"
+          isVisible={isStartTimePickerVisible || isEndTimePickerVisible}
+          onConfirm={handleTimePicked}
+          onCancel={closeTimePicker}
+          date={isStartTimePickerVisible ? startTime.toDate() : endTime.toDate()}
+          is24Hour
         />
       </View>
-
-      <DateTimePicker
-        mode="time"
-        isVisible={isStartTimePickerVisible || isEndTimePickerVisible}
-        onConfirm={handleTimePicked}
-        onCancel={closeTimePicker}
-        date={isStartTimePickerVisible ? startTime.toDate() : endTime.toDate()}
-        is24Hour
-      />
-    </View>
+    </SafeAreaView>
   );
 }
 
