@@ -1,13 +1,16 @@
 // @flow
 import moment from 'moment';
 import type Moment from 'moment';
+import PushNotification from 'react-native-push-notification';
 
 const ADD_NOTIFICATION = 'NotificationsList/ADD_NOTIFICATION';
 const DELETE_NOTIFICATION = 'NotificationsList/DELETE_NOTIFICATION';
 
 function getUniqueId(s: string): number {
-  // eslint-disable-next-line no-param-reassign,no-bitwise
-  return s.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0);
+  return Math.abs(
+    // eslint-disable-next-line no-param-reassign,no-bitwise
+    parseInt(s.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0), 10),
+  );
 }
 
 export type NotificationItem = {|
@@ -19,6 +22,7 @@ export type NotificationItem = {|
   notificationsTimes: Array<Moment>,
   notificationsIds: Array<number>,
   done: number,
+  skipWeekend: boolean,
 |}
 
 export type State = {
@@ -39,16 +43,43 @@ const initialState: State = {
 export function addNotification(notification: NotificationItem): AsyncAction {
   // TODO Create notifications here
   return (dispatch) => {
+    const notificationId = getUniqueId(moment().toString());
+    const notificationsIds = [];
+
+    if (notification.skipWeekend) {
+      // Create weekly notifications
+    } else {
+      // Creating daily notifications
+      notification.notificationsTimes.forEach((notificationTime, index) => {
+        notificationsIds.push(`${notificationId}${index}`);
+        PushNotification.localNotificationSchedule({
+          id: `${notificationId}${index}`,
+          message: `Time to ${notification.title}`,
+          date: moment(notificationTime).toDate(),
+          repeatType: 'day',
+        });
+      });
+    }
+
     dispatch({
       type: ADD_NOTIFICATION,
-      payload: notification,
+      payload: {
+        id: notificationId,
+        ...notification,
+        notificationsIds,
+      },
     });
   };
 }
 
 export function deleteNotification(notification: NotificationItem): AsyncAction {
   return (dispatch) => {
-    // TODO: Unregister all notifications here
+    notification.notificationsIds.forEach((notificationId) => {
+      PushNotification.cancelLocalNotifications({
+        id: notificationId,
+      });
+    });
+
     dispatch({
       type: DELETE_NOTIFICATION,
       payload: notification,
@@ -62,10 +93,7 @@ export default function NotificationsListReducer(state: State = initialState, ac
       return {
         notifications: [
           ...state.notifications,
-          {
-            id: getUniqueId(moment().toString()),
-            ...action.payload,
-          },
+          action.payload,
         ],
       };
     case DELETE_NOTIFICATION:
