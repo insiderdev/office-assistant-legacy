@@ -287,7 +287,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
 
           <View marginV-15>
             <View row spread marginT-7 centerV>
-              <Text h3 black>Skip Weekends</Text>
+              <Text h3 black>Skip on Weekends</Text>
               <Switch
                 height={24}
                 width={55}

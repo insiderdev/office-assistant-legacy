@@ -7,10 +7,10 @@ const ADD_NOTIFICATION = 'NotificationsList/ADD_NOTIFICATION';
 const DELETE_NOTIFICATION = 'NotificationsList/DELETE_NOTIFICATION';
 
 function getUniqueId(s: string): number {
-  return Math.abs(
-    // eslint-disable-next-line no-param-reassign,no-bitwise
-    parseInt(s.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0), 10),
-  );
+  // eslint-disable-next-line no-param-reassign,no-bitwise
+  let stringId = s.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0);
+  stringId = (`${stringId}`).substring(0, 5);
+  return Math.abs(parseInt(stringId, 10));
 }
 
 export type NotificationItem = {|
