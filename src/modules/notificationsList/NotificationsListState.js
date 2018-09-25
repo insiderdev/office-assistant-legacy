@@ -41,13 +41,24 @@ const initialState: State = {
 };
 
 export function addNotification(notification: NotificationItem): AsyncAction {
-  // TODO Create notifications here
   return (dispatch) => {
     const notificationId = getUniqueId(moment().toString());
     const notificationsIds = [];
 
     if (notification.skipWeekend) {
       // Create weekly notifications
+      // This numbers are days of the week in moment (0 is Sunday, 6 is Saturday)
+      [1, 2, 3, 4, 5].forEach((weekDay) => {
+        notification.notificationsTimes.forEach((notificationTime, index) => {
+          notificationsIds.push(`${notificationId}${weekDay}${index}`);
+          PushNotification.localNotificationSchedule({
+            id: `${notificationId}${weekDay}${index}`,
+            message: `Time to ${notification.title}`,
+            date: moment(notificationTime).day(weekDay).toDate(),
+            repeatType: 'week',
+          });
+        });
+      });
     } else {
       // Creating daily notifications
       notification.notificationsTimes.forEach((notificationTime, index) => {
