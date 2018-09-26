@@ -20,7 +20,7 @@ export type NotificationItem = {|
   endTime: Moment,
   frequency: number,
   notificationsTimes: Array<Moment>,
-  notificationsIds: Array<number>,
+  notificationsIds: Array<string>,
   done: number,
   skipWeekend: boolean,
 |}
