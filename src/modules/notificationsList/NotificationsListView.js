@@ -39,6 +39,7 @@ export default function NotificationListView(props: NotificationListViewPropsTyp
               onDelete={() => {
                 props.deleteNotification(item);
               }}
+              onEdit={() => {}}
             />
           )}
           ListEmptyComponent={(

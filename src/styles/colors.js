@@ -7,6 +7,7 @@ export default {
   textGray: '#9B9B9B',
   darkBlue: '#2B313F',
   red: '#e32d2f',
+  yellow: '#ffc655',
   lightenRed: '#FCECEC',
   blue: '#5990DC',
 };

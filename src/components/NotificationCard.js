@@ -20,6 +20,7 @@ import type { NotificationItem } from '../modules/notificationsList/Notification
 type Props = {
   notification: NotificationItem,
   onDelete: () => void,
+  onEdit: () => void,
 };
 
 type State = {
@@ -159,11 +160,29 @@ export default class NotificationCard extends React.Component<Props, State> {
             <TouchableOpacity
               onPress={() => {
                 this.swipe.recenter();
+                this.props.onEdit();
+              }}
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                paddingLeft: 25,
+                backgroundColor: colors.yellow,
+              }}
+            >
+              <Image
+                assetGroup="icons"
+                assetName="pencil"
+                resizeMode="contain"
+                style={{ width: 20 }}
+              />
+            </TouchableOpacity>,
+            <TouchableOpacity
+              onPress={() => {
+                this.swipe.recenter();
                 this.props.onDelete();
               }}
               style={{
                 flex: 1,
-                width: 100,
                 justifyContent: 'center',
                 paddingLeft: 25,
                 backgroundColor: colors.red,
