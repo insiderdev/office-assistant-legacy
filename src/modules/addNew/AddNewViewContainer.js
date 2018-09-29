@@ -1,15 +1,24 @@
-import { compose, withState, withHandlers } from 'recompose';
+import {
+  compose,
+  withState,
+  withHandlers,
+  lifecycle,
+} from 'recompose';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import AddNewView, { AddNewViewPropsType, getNotificationsInterval } from './AddNewView';
-import { addNotification } from '../notificationsList/NotificationsListState';
+import AddNewView, { AddNewViewPropsType, getNotificationsInterval, notificationsNames } from './AddNewView';
+import {
+  addNotification,
+  editNotification,
+} from '../notificationsList/NotificationsListState';
 
 export default compose(
   connect(
     null,
     dispatch => ({
       addNotification: notification => dispatch(addNotification(notification)),
+      editNotification: notification => dispatch(editNotification(notification)),
     }),
   ),
   withState('skipWeekend', 'setSkipWeekend', true),
@@ -49,6 +58,7 @@ export default compose(
         notificationItem,
         customNotificationItem,
         addNotification: add,
+        editNotification: edit,
         navigation,
       } = props;
 
@@ -62,18 +72,49 @@ export default compose(
         notificationsTimes.push(moment(startTimeCopy));
       }
 
-      add({
-        title: customNotificationItem || notificationItem.label,
-        startTime,
-        endTime,
-        frequency: frequency.value,
-        notificationsTimes,
-        notificationsIds: [],
-        skipWeekend,
-        done: 0,
-      });
+      if (navigation.state.params && navigation.state.params.edit) {
+        edit({
+          ...navigation.state.params.notification,
+          title: customNotificationItem || notificationItem.label,
+          startTime,
+          endTime,
+          frequency: frequency.value,
+          notificationsTimes,
+          skipWeekend,
+          done: 0,
+        });
+      } else {
+        add({
+          title: customNotificationItem || notificationItem.label,
+          startTime,
+          endTime,
+          frequency: frequency.value,
+          notificationsTimes,
+          notificationsIds: [],
+          skipWeekend,
+          done: 0,
+        });
+      }
 
       navigation.pop();
+    },
+  }),
+  lifecycle({
+    componentWillMount() {
+      if (this.props.navigation.state.params && this.props.navigation.state.params.edit) {
+        const notificationToEdit = this.props.navigation.state.params.notification;
+        this.props.setSkipWeekend(notificationToEdit.skipWeekend);
+        this.props.setStartTime(moment(notificationToEdit.startTime));
+        this.props.setEndTime(moment(notificationToEdit.endTime));
+        this.props.setFrequency({ label: `${notificationToEdit.frequency}`, value: notificationToEdit.frequency });
+
+        const notificationLabel = notificationsNames.find(name => name.label === notificationToEdit.title);
+        if (notificationLabel) {
+          this.props.setNotificationItem(notificationLabel);
+        } else {
+          this.props.setCustomNotificationItem(notificationToEdit.title);
+        }
+      }
     },
   }),
 )(AddNewView);

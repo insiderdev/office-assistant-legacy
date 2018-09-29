@@ -21,12 +21,19 @@ import {
 
 import { Button } from '../../components';
 import { colors, fonts } from '../../styles';
+import type { NotificationItem } from '../notificationsList/NotificationsListState';
 
 export type AddNewViewPropsType = {
   skipWeekend: boolean,
   setSkipWeekend: (boolean) => void,
   navigation: {
     pop: () => void,
+    state: {
+      params: {
+        edit?: boolean,
+        notification?: NotificationItem,
+      },
+    },
   },
   isStartTimePickerVisible: boolean,
   setStartTimePickerVisible: (boolean) => void,
@@ -82,7 +89,7 @@ const frequencyPickerValues: PickerItemsType = [
   { label: '21', value: 21 },
 ];
 
-const notificationsNames: PickerItemsType = [
+export const notificationsNames: PickerItemsType = [
   { label: 'Custom (define your own)', value: 0 },
   { label: 'Drink water', value: 1 },
   { label: 'Standup', value: 2 },
@@ -145,6 +152,8 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
     addNewNotification,
   } = props;
 
+  const navigationParams = navigation.state.params;
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.lightGray }}>
       <View flex bg-lightGray paddingV-15>
@@ -157,7 +166,9 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
               resizeMode="contain"
             />
           </TouchableOpacity>
-          <Text h2 marginL-15 darkBlue>Add New</Text>
+          <Text h2 marginL-15 darkBlue>
+            {navigationParams && navigationParams.edit ? 'Edit Notification' : 'Add New'}
+          </Text>
         </View>
 
         <View bg-white padding-20 marginV-15>
@@ -303,7 +314,7 @@ export default function AddNewView(props: AddNewViewPropsType): React.Node {
 
         <View paddingH-30 paddingV-10 centerH venterV>
           <Button
-            label="add new"
+            label={navigationParams && navigationParams.edit ? 'update' : 'add new'}
             testID="add-item-button"
             onPress={addNewNotification}
           />

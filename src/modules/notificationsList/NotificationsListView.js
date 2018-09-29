@@ -21,6 +21,7 @@ type NotificationListViewPropsType = {
   },
   notifications: Array<NotificationItem>,
   deleteNotification: (NotificationItem) => void,
+  editNotification: (NotificationItem) => void,
 }
 
 export default function NotificationListView(props: NotificationListViewPropsType): React.Node {
@@ -39,7 +40,7 @@ export default function NotificationListView(props: NotificationListViewPropsTyp
               onDelete={() => {
                 props.deleteNotification(item);
               }}
-              onEdit={() => {}}
+              onEdit={() => props.navigation.navigate('AddNew', { edit: true, notification: item })}
             />
           )}
           ListEmptyComponent={(

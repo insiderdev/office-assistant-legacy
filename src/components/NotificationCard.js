@@ -48,6 +48,16 @@ export default class NotificationCard extends React.Component<Props, State> {
     this._setNextIteration();
   }
 
+  componentWillReceiveProps(newProps) {
+    if (
+      moment(newProps.startTime) !== moment(this.props.startTime)
+      || moment(newProps.endTime) !== moment(this.props.endTime)
+    ) {
+      this._clearTimer();
+      this._setNextIteration(newProps.notification);
+    }
+  }
+
   componentWillUnmount() {
     this._clearTimer();
   }
@@ -67,8 +77,8 @@ export default class NotificationCard extends React.Component<Props, State> {
     }
   };
 
-  _setNextIteration = () => {
-    const { notification } = this.props;
+  _setNextIteration = (customNotification) => {
+    const notification = customNotification || this.props.notification;
 
     const now = moment();
     let nextNotification = moment();
