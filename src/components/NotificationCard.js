@@ -27,6 +27,7 @@ type State = {
   nextNotificationDiffSeconds: number,
   notificationNumber: number,
   notificationSecondsInterval: number,
+  skip: boolean,
 };
 
 export default class NotificationCard extends React.Component<Props, State> {
@@ -80,6 +81,21 @@ export default class NotificationCard extends React.Component<Props, State> {
   _setNextIteration = (customNotification) => {
     const notification = customNotification || this.props.notification;
 
+    if (
+      notification.skipWeekend
+      && (
+        moment().day() === 0
+        || moment().day() === 6
+      )
+    ) {
+      if (this.state) {
+        this.setState({ skip: true });
+      } else {
+        this.state = { skip: true };
+      }
+      return;
+    }
+
     const now = moment();
     let nextNotification = moment();
 
@@ -132,6 +148,7 @@ export default class NotificationCard extends React.Component<Props, State> {
         )) : 0,
       notificationNumber,
       notificationSecondsInterval,
+      skip: false,
     };
 
     if (this.state) {
@@ -218,7 +235,7 @@ export default class NotificationCard extends React.Component<Props, State> {
                   color: colors.textGray,
                 }}
               >
-                {this.state.notificationNumber} / {notification.frequency}
+                {this.state.skip ? '- : -' : `${this.state.notificationNumber} / ${notification.frequency}`}
               </Text>
             </View>
 
@@ -235,7 +252,9 @@ export default class NotificationCard extends React.Component<Props, State> {
                   size={30}
                   unfilledColor="#D2C7D6"
                   color="#4A90E2"
-                  progress={1 - (this.state.nextNotificationDiffSeconds / this.state.notificationSecondsInterval)}
+                  progress={this.state.skip ?
+                    0 :
+                    1 - (this.state.nextNotificationDiffSeconds / this.state.notificationSecondsInterval)}
                   direction="counter-clockwise"
                   borderWidth={0}
                 />
@@ -259,11 +278,14 @@ export default class NotificationCard extends React.Component<Props, State> {
                 </View>
               </View>
               <View centerH style={{ width: 40 }}>
-                { this.state.nextNotificationDiffSeconds <= 0 && (
-                <Text style={{ color: colors.darkBlue }}>00:00</Text>
+                { this.state.skip && (
+                  <Text numberOfLines={1} style={{ color: colors.darkBlue }}>Mon</Text>
                 )}
-                { this.state.nextNotificationDiffSeconds > 0 && (
-                <Text style={{ color: colors.darkBlue }}>
+                { !this.state.skip && this.state.nextNotificationDiffSeconds <= 0 && (
+                <Text numberOfLines={1} style={{ color: colors.darkBlue }}>00:00</Text>
+                )}
+                { !this.state.skip && this.state.nextNotificationDiffSeconds > 0 && (
+                <Text numberOfLines={1} style={{ color: colors.darkBlue }}>
                   {this._addLeadingZero(Math.floor(Math.abs(this.state.nextNotificationDiffSeconds) / 60))}:
                   {this._addLeadingZero(Math.round(Math.abs(this.state.nextNotificationDiffSeconds) % 60))}
                 </Text>

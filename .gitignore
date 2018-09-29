@@ -59,6 +59,6 @@ buck-out/
 coverage/
 
 # Sensitive files
-ios/GoogleServices-Info.plist
+ios/GoogleService-Info.plist
 
 ios/Pods
