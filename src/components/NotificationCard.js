@@ -48,10 +48,10 @@ export default class NotificationCard extends React.Component<Props, State> {
     this._setNextIteration();
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(newProps: Props) {
     if (
-      moment(newProps.startTime) !== moment(this.props.startTime)
-      || moment(newProps.endTime) !== moment(this.props.endTime)
+      moment(newProps.notification.startTime) !== moment(this.props.notification.startTime)
+      || moment(newProps.notification.endTime) !== moment(this.props.notification.endTime)
     ) {
       this._clearTimer();
       this._setNextIteration(newProps.notification);

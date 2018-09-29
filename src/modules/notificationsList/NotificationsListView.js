@@ -17,7 +17,7 @@ import type { NotificationItem } from './NotificationsListState';
 
 type NotificationListViewPropsType = {
   navigation: {
-    navigate: (string) => void,
+    navigate: (string, any) => void,
   },
   notifications: Array<NotificationItem>,
   deleteNotification: (NotificationItem) => void,
