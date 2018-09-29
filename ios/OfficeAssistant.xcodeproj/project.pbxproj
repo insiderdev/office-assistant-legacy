@@ -36,11 +36,13 @@
 		2DCD954D1E0B4F2C00145EB5 /* OfficeAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* OfficeAssistantTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		3963C69469BC4A73BC7AEDE2 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D10B928C5FFE489296FBC920 /* Muli-Light.ttf */; };
+		4D3CBB2257A7537E69D73BEE /* Pods_OfficeAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15AB59B7B9E06EF20DA29DB /* Pods_OfficeAssistant.framework */; };
 		50CB56D3EC0D4704B4C734A7 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8057B24C6FD346FBA0215810 /* Muli-Bold.ttf */; };
 		512CB2CE48FB4137BFDA6064 /* libreactnativeuilib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA3B139B34B45B0AD35DABA /* libreactnativeuilib.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		67001321303246F1BD482E65 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C1DE22DC3CB4D5E90A10D25 /* Muli.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A91EC216215F7A1B00C1400E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A91EC1EB215F7A1B00C1400E /* GoogleService-Info.plist */; };
 		A97ED0E5214D1E2400E5F567 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A97ED0E2214D1E1900E5F567 /* libART.a */; };
 		A9F6D221215A69730004DB64 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F6D204215A69670004DB64 /* libRCTPushNotification.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -381,13 +383,17 @@
 		2D02E47B1E0B4A5D006451C7 /* OfficeAssistant-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OfficeAssistant-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* OfficeAssistant-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OfficeAssistant-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		53A30757F43217BD82A9D892 /* Pods-OfficeAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfficeAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfficeAssistant/Pods-OfficeAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		5C1DE22DC3CB4D5E90A10D25 /* Muli.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Muli.ttf; path = ../assets/fonts/Muli.ttf; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		68ACCED264E7472DBF3852AA /* reactnativeuilib.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = reactnativeuilib.xcodeproj; path = "../node_modules/react-native-ui-lib/lib/ios/reactnativeuilib.xcodeproj"; sourceTree = "<group>"; };
+		720FAE8A7A87370965E66890 /* Pods-OfficeAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfficeAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-OfficeAssistant/Pods-OfficeAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		8057B24C6FD346FBA0215810 /* Muli-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-Bold.ttf"; path = "../assets/fonts/Muli-Bold.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9EA3B139B34B45B0AD35DABA /* libreactnativeuilib.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libreactnativeuilib.a; sourceTree = "<group>"; };
+		A15AB59B7B9E06EF20DA29DB /* Pods_OfficeAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OfficeAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A91EC1EB215F7A1B00C1400E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A97ED0DC214D1E1900E5F567 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		A9F6D1F0215A69670004DB64 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				A9F6D221215A69730004DB64 /* libRCTPushNotification.a in Frameworks */,
 				512CB2CE48FB4137BFDA6064 /* libreactnativeuilib.a in Frameworks */,
+				4D3CBB2257A7537E69D73BEE /* Pods_OfficeAssistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +546,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				A91EC1EB215F7A1B00C1400E /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -573,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				A15AB59B7B9E06EF20DA29DB /* Pods_OfficeAssistant.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -636,6 +645,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F3DCCE9213524171A92ECB56 /* Resources */,
 				A97ED0B1214D1DF900E5F567 /* Recovered References */,
+				A50234803A1BD51002EAF91D /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -651,6 +661,15 @@
 				2D02E4901E0B4A5D006451C7 /* OfficeAssistant-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A50234803A1BD51002EAF91D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53A30757F43217BD82A9D892 /* Pods-OfficeAssistant.debug.xcconfig */,
+				720FAE8A7A87370965E66890 /* Pods-OfficeAssistant.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A97ED0B1214D1DF900E5F567 /* Recovered References */ = {
@@ -732,10 +751,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OfficeAssistant" */;
 			buildPhases = (
+				7A9291B012489C7CFB105447 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				B90577BBE4FE2BC4896D6826 /* [CP] Embed Pods Frameworks */,
+				4C5887FC756F377E7849DCB1 /* [CP] Copy Pods Resources */,
+				A91EC250215F7CBA00C1400E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1204,6 +1227,7 @@
 				3963C69469BC4A73BC7AEDE2 /* Muli-Light.ttf in Resources */,
 				67001321303246F1BD482E65 /* Muli.ttf in Resources */,
 				DB642B7E9B194E5A866F52E1 /* Muli-SemiBold.ttf in Resources */,
+				A91EC216215F7A1B00C1400E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,6 +1276,73 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		4C5887FC756F377E7849DCB1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OfficeAssistant/Pods-OfficeAssistant-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A9291B012489C7CFB105447 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OfficeAssistant-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A91EC250215F7CBA00C1400E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		B90577BBE4FE2BC4896D6826 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OfficeAssistant/Pods-OfficeAssistant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OfficeAssistant/Pods-OfficeAssistant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1373,6 +1464,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53A30757F43217BD82A9D892 /* Pods-OfficeAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1388,6 +1480,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.insider.apps.office-assistant";
 				PRODUCT_NAME = OfficeAssistant;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1395,6 +1488,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 720FAE8A7A87370965E66890 /* Pods-OfficeAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1409,6 +1503,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.insider.apps.office-assistant";
 				PRODUCT_NAME = OfficeAssistant;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

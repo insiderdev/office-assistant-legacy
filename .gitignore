@@ -57,3 +57,8 @@ buck-out/
 *.jsbundle
 
 coverage/
+
+# Sensitive files
+ios/GoogleServices-Info.plist
+
+ios/Pods
