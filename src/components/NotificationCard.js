@@ -91,6 +91,7 @@ export default class NotificationCard extends React.Component<Props, State> {
       if (this.state) {
         this.setState({ skip: true });
       } else {
+        // $FlowFixMe
         this.state = { skip: true };
       }
       return;
