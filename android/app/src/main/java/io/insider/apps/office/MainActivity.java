@@ -1,4 +1,4 @@
-package com.officeassistant;
+package io.insider.apps.office;
 
 import com.facebook.react.ReactActivity;
 
