@@ -19,7 +19,3 @@ then
     echo "File content:"
     cat $GOOGLE_SERVICES_JSON_FILE
 fi
-
-# Fixing local images on android build
-echo "-- Runnung custom React Native Bundle --"
-react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
