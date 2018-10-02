@@ -98,7 +98,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.officeassistant"
+        applicationId "io.insider.apps.office"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile 'com.google.firebase:firebase-core:16.0.1'
     compile project(':react-native-push-notification')
     compile ('com.google.android.gms:play-services-gcm:8.1.0') {
         force = true;
@@ -152,3 +153,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'

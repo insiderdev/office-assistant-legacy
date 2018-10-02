@@ -60,5 +60,6 @@ coverage/
 
 # Sensitive files
 ios/GoogleService-Info.plist
+android/app/google-services.json
 
 ios/Pods
