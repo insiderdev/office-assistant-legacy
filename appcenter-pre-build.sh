@@ -8,8 +8,6 @@ then
     exit
 fi
 
-# This is the path to the google-services.json file, Update 'Android' to be the
-# correct path to the file relative to the root of your repo
 GOOGLE_SERVICES_JSON_FILE=$APPCENTER_SOURCE_DIRECTORY/android/app/google-services.json
 
 if [ -e "$GOOGLE_SERVICES_JSON_FILE" ]
@@ -21,3 +19,7 @@ then
     echo "File content:"
     cat $GOOGLE_SERVICES_JSON_FILE
 fi
+
+# Fixing local images on android build
+echo "-- Runnung custom React Native Bundle --"
+react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
