@@ -10,7 +10,7 @@ fi
 
 # This is the path to the google-services.json file, Update 'Android' to be the
 # correct path to the file relative to the root of your repo
-GOOGLE_SERVICES_JSON_FILE=$APPCENTER_SOURCE_DIRECTORY/Android/google-services.json
+GOOGLE_SERVICES_JSON_FILE=$APPCENTER_SOURCE_DIRECTORY/android/google-services.json
 
 if [ -e "$GOOGLE_SERVICES_JSON_FILE" ]
 then
