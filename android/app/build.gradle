@@ -116,18 +116,9 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
-    signingConfigs {
-        release {
-            storeFile file('office-assistant.keystore')
-            storePassword '3K5AbhVtlBj2TcCf'
-            keyAlias 'office-assistant-alias'
-            keyPassword '3K5AbhVtlBj2TcCf'
-        }
-    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
-            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
