@@ -138,8 +138,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+    compile 'com.google.firebase:firebase-core:16.0.1'
+    compile 'com.crashlytics.sdk.android:crashlytics:2.9.5'
     compile project(':react-native-push-notification')
     compile ('com.google.android.gms:play-services-gcm:8.1.0') {
         force = true;
