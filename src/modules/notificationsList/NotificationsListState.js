@@ -73,11 +73,15 @@ function createLocalNotifications(notification: NotificationItem): Array<string>
     // This numbers are days of the week in moment (0 is Sunday, 6 is Saturday)
     [1, 2, 3, 4, 5].forEach((weekDay) => {
       notification.notificationsTimes.forEach((notificationTime, index) => {
+        const date = moment(notificationTime).day(weekDay);
+        if (date < moment()) {
+          date.add(1, 'week');
+        }
         notificationsIds.push(`${notificationId}${weekDay}${index}`);
         PushNotification.localNotificationSchedule({
           id: `${notificationId}${weekDay}${index}`,
           message: `Time to ${notification.title}`,
-          date: moment(notificationTime).day(weekDay).toDate(),
+          date: date.toDate(),
           repeatType: 'week',
         });
       });
@@ -85,11 +89,15 @@ function createLocalNotifications(notification: NotificationItem): Array<string>
   } else {
     // Creating daily notifications
     notification.notificationsTimes.forEach((notificationTime, index) => {
+      const date = moment(notificationTime);
+      if (date < moment()) {
+        date.add(1, 'day');
+      }
       notificationsIds.push(`${notificationId}${index}`);
       PushNotification.localNotificationSchedule({
         id: `${notificationId}${index}`,
         message: `Time to ${notification.title}`,
-        date: moment(notificationTime).toDate(),
+        date: date.toDate(),
         repeatType: 'day',
       });
     });
