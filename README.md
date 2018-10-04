@@ -1,4 +1,4 @@
-# [WIP] Office Assistant
+# Office Assistant
 
 Office Assistant is React Native application for both Android and iOS that that helps you maintaining good health while at work by reminding you to keep moving.
 
@@ -6,7 +6,7 @@ Office Assistant is React Native application for both Android and iOS that that 
 
 The app is designed as a part of [Project365](https://project365.design/2018/03/11/day-70-office-assistant-health-reminder-app/)
 
-<a target="_blank" href='#'><img width="200" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<a target="_blank" href='https://play.google.com/store/apps/details?id=io.insider.apps.office'><img width="200" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 <a target="_blank" href='#'><img width="200" alt='Download on App Store' src='https://i.imgur.com/7IxtMV0.png'/></a>
 
 ## Some technical things used inside
